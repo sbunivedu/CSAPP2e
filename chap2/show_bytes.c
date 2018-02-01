@@ -5,9 +5,22 @@
 typedef unsigned char *byte_pointer;
 
 void show_bytes(byte_pointer start, int len) {
-  int i;
+  int i, j;
+  printf("%s", "bytes: ");
   for (i = 0; i < len; i++) {
-    printf(" %.2x", start[i]);
+    printf("%.2x ", start[i]);
+  }
+  printf("\n");
+
+  // print binary representation
+  // most significant bit first
+  printf("%s", "bits:  ");
+  for (i = len-1; i >= 0; i--) {
+    for (j = 7; j >= 0; j--) {
+      unsigned char bit = (start[i] >> j) & 1;
+      printf("%u", bit);
+    }
+    printf("%s", " ");
   }
   printf("\n");
 }
