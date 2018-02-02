@@ -81,6 +81,25 @@ int equal(int x, int y) {
   return !(x^y);
 }
 
+int fun1(unsigned word) {
+  return (int) ((word << 24) >> 24);
+}
+
+int fun2(unsigned word) {
+  return ((int) word << 24) >> 24;
+}
+
+/* WARNING: This is buggy code */
+float sum_elements(float a[], unsigned length) {
+  int i;
+  float result = 0;
+
+  for (i = 0; i <= length-1; i++) {
+    result += a[i];
+  }
+  return result;
+}
+
 int main(void) {
 /*
   int a = ~0x69;
@@ -124,5 +143,30 @@ int main(void) {
   int y = 0x40;
   printf("equal? %d\n", equal(x,y));
 */
+/*
+  //int x = -2147483647-1;
+  //show_bytes(&x, 4);
+  //int y = 2147483648U;
+  //show_bytes(&y, 4);
+  //printf("%d", -2147483647-1 == 2147483648U);
+  //printf("%d",-2147483647-1 < 2147483647);
+  //printf("%d",-2147483647-1 < 2147483647);
+  //printf("%d\n",-2147483647-1U < 2147483647);
+  //int a = -2147483647-1U;
+  //show_bytes(&a, 4);
+  //printf("%d\n",-2147483647-1 < 2147483647);
+  //printf("%d\n",-2147483647-1U < -2147483647);
+*/
+/*
+  int x = 0xEDCBA987;
+  //x = fun1(x);
+  //printf("%d\n", x);
+  //show_bytes(&x, 4);
+  x = fun2(x);
+  printf("%d\n", x);
+  show_bytes(&x, 4);
+*/
+  float a[] = {1.0,2.0,3.0,4.0,5.0};
+  printf("%f\n", sum_elements(a, 0));
   return 0;
 }
