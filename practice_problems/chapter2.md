@@ -536,3 +536,10 @@ such that it is not true (i.e., evaluates to 0).
 
 Note that solutions to all practice problems can be found in the CSAPP2e
 starting from page 134.
+
+Sample code can be found in chapter2.c and experimented with as follows:
+```
+gcc -o chapter2 -m32 chapter2.c
+./chapter2
+
+```
